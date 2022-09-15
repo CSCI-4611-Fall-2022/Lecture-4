@@ -11,7 +11,7 @@ To work with this code, you will first need to install [Node.js 16.17.0 LTS](htt
 ## Topics
 
 - Overview of [Assignment 1](https://github.com/CSCI-4611-Fall-2022/Assignment-1)
-- Academic integrity reminder
+- Academic honesty reminder
 - How to get help from the instruction team
 - Programming the complete starter code from scratch
 
