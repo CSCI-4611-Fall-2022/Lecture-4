@@ -76,11 +76,11 @@ export class SpaceMinesweeper extends gfx.GfxApp
 
         this.ship.lookAt(this.mousePosition);
 
-        this.mines.children.forEach((mine: gfx.Transform2)=>{
-            const mineToShip = gfx.Vector2.subtract(mine.position, this.ship.position);
+        this.mines.children.forEach((mineElem: gfx.Transform2)=>{
+            const mineToShip = gfx.Vector2.subtract(this.ship.position, mineElem.position);
             mineToShip.normalize();
             mineToShip.multiplyScalar(mineSpeed);
-            mine.position.subtract(mineToShip);
+            mineElem.position.add(mineToShip);
         });
 
         this.timeSinceLastMineSpawn += deltaTime;
