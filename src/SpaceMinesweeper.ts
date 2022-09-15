@@ -72,8 +72,16 @@ export class SpaceMinesweeper extends gfx.GfxApp
     update(deltaTime: number): void 
     {
         const mineSpawnInterval = .5;
+        const mineSpeed = 0.1 * deltaTime;
 
         this.ship.lookAt(this.mousePosition);
+
+        this.mines.children.forEach((mine: gfx.Transform2)=>{
+            const mineToShip = gfx.Vector2.subtract(mine.position, this.ship.position);
+            mineToShip.normalize();
+            mineToShip.multiplyScalar(mineSpeed);
+            mine.position.subtract(mineToShip);
+        });
 
         this.timeSinceLastMineSpawn += deltaTime;
         if(this.timeSinceLastMineSpawn >= mineSpawnInterval)
@@ -90,11 +98,17 @@ export class SpaceMinesweeper extends gfx.GfxApp
     private spawnMine(): void
     {
         const mineSpawnDistance = 1.25;
+        const mineLimit = 20;
         
         const mineInstance = new gfx.ShapeInstance(this.mine);
 
         mineInstance.rotation = this.ship.rotation + (Math.random() * Math.PI / 3 - Math.PI / 6);
         mineInstance.translateY(mineSpawnDistance);
         this.mines.add(mineInstance);
+
+        if(this.mines.children.length > mineLimit)
+        {
+            this.mines.children[0].remove();
+        }
     }
 }
