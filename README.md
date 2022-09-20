@@ -1,4 +1,4 @@
-# Lecture 4: 2D Graphics Programming
+# Lecture 4: 2D Graphics Programming (Part 1)
 
 Detailed explanation of this code can be found in the [lecture video](https://mediaspace.umn.edu/media/t/1_qm6hrsb2).
 
